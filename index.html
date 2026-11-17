@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservas · Agenda de citas</title>
+<meta name="description" content="Agenda de citas para negocios de servicios: horarios disponibles, reservas sin choques y recordatorios por WhatsApp.">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="barra-superior">
+  <div class="marca"><i></i> Reservas</div>
+  <span class="suave" id="negocio">Estudio Aurora · peluquería y estética</span>
+  <span class="espacio"></span>
+  <button id="hoy" class="chico">Hoy</button>
+</header>
+
+<main>
+  <section class="kpis" id="kpis" aria-label="Resumen del día"></section>
+
+  <section class="tablero">
+    <div class="columna">
+      <div class="panel">
+        <div class="fila" style="justify-content: space-between; margin-bottom: 12px">
+          <button id="anterior" class="chico" aria-label="Semana anterior">‹</button>
+          <strong id="titulo-semana"></strong>
+          <button id="siguiente" class="chico" aria-label="Semana siguiente">›</button>
+        </div>
+        <div class="semana" id="semana" role="tablist" aria-label="Días de la semana"></div>
+      </div>
+
+      <div class="panel">
+        <div class="titulo-panel" id="titulo-dia">Citas del día</div>
+        <ol class="agenda" id="agenda"></ol>
+      </div>
+    </div>
+
+    <aside class="panel nueva">
+      <div class="titulo-panel">Nueva cita</div>
+      <form id="form-cita">
+        <label>Servicio
+          <select name="servicio" id="servicio"></select>
+        </label>
+        <label>Fecha <input type="date" name="fecha" id="fecha" required></label>
+        <div>
+          <span class="etiqueta">Horarios disponibles</span>
+          <div class="horas" id="horas" role="radiogroup" aria-label="Horarios disponibles"></div>
+        </div>
+        <label>Cliente <input name="cliente" required placeholder="Nombre y apellido" autocomplete="off"></label>
+        <label>Teléfono <input name="telefono" required inputmode="tel" placeholder="7XXXXXXX" autocomplete="off"></label>
+        <button class="principal" id="reservar">Reservar</button>
+      </form>
+      <p class="suave nota">Los datos se guardan solo en este navegador. Es una demostración: usa nombres y teléfonos de ejemplo.</p>
+    </aside>
+  </section>
+</main>
+
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

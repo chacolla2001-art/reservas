@@ -1,0 +1,38 @@
+main { max-width: 1180px; margin: 0 auto; padding: 18px 20px 40px; display: flex; flex-direction: column; gap: 16px; }
+.tablero { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; align-items: start; }
+.columna { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+.semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.dia { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; background: var(--panel-2); }
+.dia small { color: var(--suave); text-transform: uppercase; font-size: .7rem; letter-spacing: .08em; }
+.dia b { font-size: 1.25rem; }
+.dia .puntos { display: flex; gap: 3px; min-height: 8px; }
+.dia .puntos i { width: 6px; height: 6px; border-radius: 50%; background: var(--acento); }
+.dia[aria-selected='true'] { background: linear-gradient(135deg, var(--acento), var(--acento-2)); color: #fff; border-color: transparent; box-shadow: 0 8px 22px color-mix(in srgb, var(--acento) 40%, transparent); }
+.dia[aria-selected='true'] small { color: rgba(255, 255, 255, .85); }
+.dia[aria-selected='true'] .puntos i { background: #fff; }
+.dia.cerrado { opacity: .5; }
+.dia.es-hoy b { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.agenda { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cita { display: grid; grid-template-columns: 74px 1fr auto; gap: 12px; align-items: center; background: var(--panel-2); border-radius: 12px; padding: 12px; border-left: 4px solid var(--acento); }
+.cita .hora { font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.cita .hora small { display: block; color: var(--suave); font-weight: 500; font-size: .75rem; }
+.cita .quien b { display: block; }
+.cita .acciones { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.cita.cancelada { opacity: .5; border-left-color: var(--peligro); }
+.cita.cancelada .quien b { text-decoration: line-through; }
+.cita.atendida { border-left-color: var(--suave); }
+a.boton { display: inline-block; text-decoration: none; color: inherit; border: 1px solid var(--borde); border-radius: 10px; padding: 4px 10px; font-size: .85rem; transition: border-color .2s, transform .12s; }
+a.boton:hover { border-color: var(--acento); transform: translateY(-1px); }
+
+.nueva { position: sticky; top: 76px; }
+.nueva form { display: flex; flex-direction: column; gap: 12px; }
+.etiqueta { font-size: .82rem; color: var(--suave); display: block; margin-bottom: 6px; }
+.horas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-height: 190px; overflow: auto; }
+.horas button { padding: 6px 0; font-variant-numeric: tabular-nums; font-size: .9rem; }
+.horas button[aria-checked='true'] { background: linear-gradient(135deg, var(--acento), var(--acento-2)); color: #fff; border-color: transparent; font-weight: 700; }
+.nota { font-size: .8rem; margin: 12px 0 0; }
+#reservar { padding: 11px; }
+
+@media (max-width: 900px) { .tablero { grid-template-columns: 1fr; } .nueva { position: static; } .cita { grid-template-columns: 64px 1fr; } .cita .acciones { grid-column: 1 / -1; justify-content: flex-start; } }
